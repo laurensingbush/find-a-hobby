@@ -1,0 +1,30 @@
+.like-btn-container {
+  @include flexbox(
+    $flex-direction: row,
+    $justify-content: flex-end,
+    $align-items: center
+  );
+  width: 100%;
+  max-width: 9.5rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: $light-green;
+  margin: 0 0 0.5rem 0;
+  padding: 0.5rem;
+  p,
+  button {
+    margin: 0;
+    font-size: 1em;
+  }
+  .btn {
+    @include flexbox($flex-direction: column, $align-items: center);
+    margin-left: 0.5rem;
+    button {
+      @include flexbox($align-items: center);
+      font-size: 1rem;
+      @include desktop {
+        border: 1.5px solid $light-green;
+      }
+    }
+  }
+}

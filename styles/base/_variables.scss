@@ -1,0 +1,33 @@
+// Google Font
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+// Colors
+$white: #ffffff;
+$black: #182628;
+$bg-color: #f2f2f2;
+$green: #3b945e;
+$light-green: #57ba98;
+$aqua: #65ccb8;
+$dark-gray: #6b6e70;
+$hover-lightgreen: rgba($light-green, 0.6);
+$modal-bg: rgba(0, 0, 0, 0.7);
+$boxshadow-color: rgba(0, 0, 0, 0.2);
+$error-color: #f99386;
+
+// Fonts
+$font-stack: 'Source Sans Pro', system, -apple-system, BlinkMacSystemFont,
+  Helvetica, sans-serif, Arial;
+$Roboto: 'Roboto', $font-stack;
+$Caveat: 'Caveat', $font-stack;
+
+// Font-size
+$base-font-size: 1rem;
+
+// Media Queries
+$small-iphone-width: 414px;
+$tablet-width: 768px;
+$ipadPro-width: 1024px;
+$ipadPro-height: 1366px;
+$desktop-width: 1224px;
+$large-desktop-width: 1824px;

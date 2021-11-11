@@ -1,0 +1,79 @@
+.searchbar-container {
+  @include flexbox(
+    $flex-direction: row,
+    $justify-content: flex-end,
+    $align-items: center
+  );
+  .search-box {
+    @include flexbox(
+      $flex-direction: row,
+      $justify-content: space-between,
+      $align-items: center
+    );
+    border: 2px solid $green;
+    border-radius: 5px;
+    background-color: $bg-color;
+    padding: 0.5rem 0.3rem;
+    @include small-iphone {
+      padding: 0.5rem;
+    }
+    .dropdown-container {
+      position: relative;
+      padding-right: 0.2rem;
+      select {
+        border: none;
+        background-color: $bg-color;
+      }
+      ::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -5px;
+        height: 100%;
+        transform: translateY(-50%);
+        width: 1px;
+        background-color: $dark-gray;
+      }
+    }
+    .input-container {
+      @include flexbox($align-items: center);
+      position: relative;
+      margin-left: 1rem;
+      input {
+        padding: 0.2rem 1.9rem;
+        border: none;
+        border-bottom: 1px solid $green;
+        background-color: $bg-color;
+        color: $black;
+        font-size: 1rem;
+        width: 100%;
+        @include placeholder {
+          color: $dark-gray;
+        }
+        @include tablet {
+          @include placeholder {
+            font-size: 1rem;
+          }
+        }
+        @include desktop {
+          @include placeholder {
+            font-size: 0.9rem;
+          }
+        }
+      }
+      .search-icon,
+      .clear-btn {
+        font-size: 0.8rem;
+        color: $green;
+        position: absolute;
+      }
+      .search-icon {
+        left: 2%;
+      }
+      .clear-btn {
+        @include flexbox($align-items: center);
+        right: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+.modal-container-hobby-list,
+.modal-container-user {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  opacity: 1;
+  .modal-hobby-list,
+  .modal-user {
+    @include flexbox($justify-content: center, $align-items: center);
+    position: absolute;
+    box-shadow: 0 0 0.625rem $boxshadow-color;
+  }
+}
+
+.modal-container-hobby-list {
+  @include flexbox($justify-content: center, $align-items: center);
+  animation: modalShow 0.5s ease;
+  background-color: $modal-bg;
+  .modal-hobby-list {
+    width: 90%;
+    height: 75%;
+    border: 2px solid $green;
+    border-radius: 5px;
+    background-color: $bg-color;
+    @include tablet {
+      width: 32rem;
+      height: auto;
+    }
+    @include large-desktop {
+      width: 40rem;
+    }
+    .modal-btn-hobby-list {
+      color: $black;
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-size: 1.5rem;
+      z-index: 11;
+    }
+  }
+}
+
+.modal-container-user {
+  animation: modalSlide 0.5s ease;
+  .modal-user {
+    width: 11rem;
+    height: 10rem;
+    top: 0.5rem;
+    right: 0;
+    border-radius: 5px 0 0 5px;
+    border-bottom: 2px solid $green;
+    border-top: 2px solid $green;
+    border-left: 2px solid $green;
+    background-color: $bg-color;
+    .modal-btn-user {
+      display: none;
+    }
+  }
+}
+
+@keyframes modalShow {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: flex;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlide {
+  0% {
+    transform: translate(125%, 0px);
+  }
+  100% {
+    transform: 0;
+  }
+}

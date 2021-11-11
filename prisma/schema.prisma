@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Category {
+  id      Int     @id
+  name    String
+  type    String
+  hobbies Hobby[]
+}
+
+model Hobby {
+  id         Int        @id
+  title      String
+  urlTitle   String
+  summary    String?
+  history    String?
+  imageUrl   String?
+  categoryId Int
+  category   Category   @relation(fields: [categoryId], references: [id])
+  users      UserLike[]
+}
+
+model UserLike {
+  userId   Int
+  hobbyId  Int
+  newHobby Boolean @default(true)
+  hobby    Hobby   @relation(fields: [hobbyId], references: [id])
+  user     User    @relation(fields: [userId], references: [id])
+
+  @@id([userId, hobbyId])
+}
+
+model Account {
+  id                 Int     @id @default(autoincrement())
+  userId             Int
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?
+  access_token       String?
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+  oauth_token_secret String?
+  oauth_token        String?
+  user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           Int      @id @default(autoincrement())
+  sessionToken String   @unique
+  userId       Int
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            Int        @id @default(autoincrement())
+  name          String
+  email         String     @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  hobbies       UserLike[]
+}

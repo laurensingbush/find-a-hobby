@@ -1,0 +1,42 @@
+.signin-container {
+  @include flexbox(
+    $flex-direction: column,
+    $align-items: center,
+    $justify-content: center
+  );
+  border: 2px solid $green;
+  border-radius: 5px;
+  width: 20rem;
+  margin: 2rem auto;
+  padding: 1rem 0;
+  h2 {
+    margin: 0 0 1rem 0;
+  }
+  .error-msg {
+    background-color: $error-color;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    margin: 0 2rem 1rem 2rem;
+    border-radius: 5px;
+  }
+  button {
+    @include flexbox(
+      $flex-direction: row,
+      $align-items: center,
+      $justify-content: center
+    );
+    border: 1px solid $green;
+    border-radius: 3px;
+    margin: 0 0 1rem 0;
+    padding: 0.5rem 1.7rem;
+    @include desktop {
+      &:hover {
+        background-color: $hover-lightgreen;
+      }
+    }
+    :first-child {
+      font-size: 1rem;
+      margin-right: 0.7rem;
+    }
+  }
+}

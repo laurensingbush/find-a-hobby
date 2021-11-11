@@ -1,0 +1,99 @@
+.modal-hobby-content-container {
+  position: relative;
+  background-color: $bg-color;
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  padding: 1rem 0.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: 8px; /* Firefox */
+  scrollbar-color: $light-green $bg-color;
+  /* WebKit */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $bg-color;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $light-green;
+    border-radius: 16px;
+    border: 2px solid $bg-color;
+  }
+  @include tablet {
+    @include flexbox(
+      $flex-direction: row-reverse,
+      $justify-content: space-between
+    );
+    padding: 2rem 1rem;
+  }
+  @include desktop {
+    padding: 2rem 1.5rem 1rem 1.5rem;
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border: 3px solid $bg-color;
+    }
+  }
+  .modal-img {
+    margin: 0 auto;
+    width: 60%;
+    @include small-iphone {
+      width: 40%;
+    }
+    @include tablet {
+      margin-right: 2rem;
+    }
+    img {
+      object-fit: contain;
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 0 0.625rem $boxshadow-color;
+    }
+  }
+  .modal-content {
+    margin: 0.5rem 0 0 0;
+    @include tablet {
+      width: 60%;
+      margin: 0 1.5rem 0 0;
+    }
+    @include desktop {
+      width: 60%;
+    }
+    .modal-description {
+      @include flexbox($flex-direction: column);
+      p {
+        margin: 0.5rem 0;
+        color: $dark-gray;
+      }
+      a {
+        color: $light-green;
+        @include flexbox($flex-direction: row, $align-items: center);
+        padding: 0;
+        margin: 0 0 1.5rem 0;
+        font-size: 0.8rem;
+        svg {
+          padding: 0;
+          margin-left: 0.2rem;
+        }
+      }
+    }
+    .loading {
+      @include loading-dots($width: 10px, $height: 10px);
+    }
+    .like-btns {
+      @include flexbox(
+        $flex-direction: column,
+        $align-items: center,
+        $justify-content: center
+      );
+      @include tablet {
+        @include flexbox($align-items: flex-start);
+      }
+    }
+  }
+}

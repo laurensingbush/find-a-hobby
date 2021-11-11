@@ -1,0 +1,26 @@
+/*
+*   Main SCSS
+*/
+
+// BASE
+@import './base/variables';
+@import './base/base';
+@import './base/mixins';
+
+// PAGES
+@import './pages/home';
+@import './pages/signIn';
+@import './pages/my-hobbies';
+@import './pages/my-hobbies[id]';
+
+// COMPONENTS
+@import './components/NavBar';
+@import './components/SearchBar';
+@import './components/CategoryList';
+@import './components/HobbyList';
+@import './components/Modal';
+@import './components/ModalHobbyContent';
+@import './components/ModalUserContent';
+@import './components/LikeButton';
+@import './components/MyHobbyList';
+@import './components/Tooltip';

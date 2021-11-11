@@ -1,0 +1,128 @@
+// Flexbox
+@mixin flexbox(
+  $flex-direction: false,
+  $flex-wrap: false,
+  $justify-content: false,
+  $align-items: false,
+  $flex: false
+) {
+  display: flex;
+  @if $flex-direction != false {
+    flex-direction: $flex-direction;
+  }
+  @if $flex-wrap != false {
+    flex-wrap: $flex-wrap;
+  }
+  @if $justify-content != false {
+    justify-content: $justify-content;
+  }
+  @if $align-items != false {
+    align-items: $align-items;
+  }
+  @if $flex != false {
+    flex: $flex;
+  }
+}
+
+// Placeholders in HTML5 forms
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+// Visually hide labels
+@mixin hide-label {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+
+// Loading dots
+@mixin loading-dots($width: 0, $height: 0) {
+  position: relative;
+  margin: 5rem auto;
+  background-color: $light-green;
+  color: $light-green;
+  border-radius: calc($width / 2);
+  width: $width;
+  height: $height;
+  animation: dots 1s infinite linear alternate;
+  animation-delay: 0.5s;
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+  }
+  &::before {
+    left: calc(-1 * ($width + 5px));
+    width: $width;
+    height: $height;
+    border-radius: calc($width / 2);
+    background-color: $light-green;
+    color: $light-green;
+    animation: dots 1s infinite alternate;
+    animation-delay: 0s;
+  }
+  &::after {
+    left: calc($width + 5px);
+    width: $width;
+    height: $height;
+    border-radius: calc($width / 2);
+    background-color: $light-green;
+    color: $light-green;
+    animation: dots 1s infinite alternate;
+    animation-delay: 1s;
+  }
+  @keyframes dots {
+    0% {
+      background-color: $light-green;
+    }
+    50%,
+    100% {
+      background-color: #bce8d9;
+    }
+  }
+}
+// Media Queries
+@mixin small-iphone {
+  @media only screen and (min-width: #{$small-iphone-width}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+@mixin ipadPro {
+  @media only screen and (min-width: #{$ipadPro-width}) and (max-height: #{$ipadPro-height}) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media only screen and (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+@mixin large-desktop {
+  @media only screen and (min-width: #{$large-desktop-width}) {
+    @content;
+  }
+}

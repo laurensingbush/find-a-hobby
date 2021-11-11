@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "General hobbies",
+    "type": ""
+  },
+  {
+    "id": 2,
+    "name": "Outdoors and Sports",
+    "type": ""
+  },
+  {
+    "id": 3,
+    "name": "Educational hobbies",
+    "type": ""
+  },
+  {
+    "id": 4,
+    "name": "Collection hobbies",
+    "type": ""
+  },
+  {
+    "id": 5,
+    "name": "Indoors",
+    "type": "Collection hobbies"
+  },
+  {
+    "id": 6,
+    "name": "Outdoors",
+    "type": "Collection hobbies"
+  },
+  {
+    "id": 7,
+    "name": "Competitive hobbies",
+    "type": ""
+  },
+  {
+    "id": 8,
+    "name": "Indoors",
+    "type": "Competitive hobbies"
+  },
+  {
+    "id": 9,
+    "name": "Outdoors",
+    "type": "Competitive hobbies"
+  },
+  {
+    "id": 10,
+    "name": "Observation hobbies",
+    "type": ""
+  },
+  {
+    "id": 11,
+    "name": "Indoors",
+    "type": "Observation hobbies"
+  },
+  {
+    "id": 12,
+    "name": "Outdoors",
+    "type": "Observation hobbies"
+  }
+]

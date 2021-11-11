@@ -1,0 +1,73 @@
+nav {
+  background-color: $aqua;
+  @include flexbox(
+    $flex-direction: row,
+    $justify-content: space-between,
+    $align-items: center
+  );
+  a {
+    color: $bg-color;
+    font-size: 1rem;
+    transition: color 0.2s ease-in-out;
+    @include desktop {
+      &:hover {
+        color: $green;
+      }
+    }
+  }
+  .bold {
+    color: $dark-gray;
+  }
+  .left {
+    a {
+      font-family: $Caveat;
+      font-size: 1.5rem;
+    }
+  }
+  .right {
+    @include flexbox($flex-direction: row, $align-items: center);
+    .my-hobbies {
+      margin: 0 1rem 0 0;
+    }
+    .user-circle {
+      @include flexbox($justify-content: center, $align-items: center);
+      width: 2rem;
+      height: 2rem;
+      background-color: $hover-lightgreen;
+      border: 1px solid $green;
+      border-radius: 50%;
+      transition: box-shadow 0.2s ease-in-out;
+      @include desktop {
+        cursor: pointer;
+        &:hover {
+          box-shadow: 0 0 0 3px $light-green;
+        }
+      }
+      svg {
+        font-size: 1.3rem;
+      }
+    }
+    .signin {
+      color: $bg-color;
+      border: 1px solid $white;
+      border-radius: 3px;
+      padding: 0.2rem 0.6rem;
+      @include desktop {
+        &:hover {
+          color: $green;
+          border: 1px solid $green;
+        }
+      }
+    }
+    .signin.bold {
+      color: $dark-gray;
+      border: 1px solid $dark-gray;
+    }
+  }
+  .loading {
+    opacity: 0;
+  }
+  .loaded {
+    opacity: 1;
+  }
+}

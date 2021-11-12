@@ -24,7 +24,7 @@ const Tooltip: React.FC<Props> = ({ type, isLiked, isNewHobby, children }) => {
         return () => {
             clearTimeout(timeout);
         }
-    }, [isActive]);
+    }, [isActive, toggleShow]);
 
     return (
          <div className='tooltip-container' onMouseEnter={toggleShow} onMouseLeave={toggleHide} >

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useImperativeHandle, forwardRef, useCallback, ReactNode, RefObject } from 'react';
+import React, { useEffect, useState, useImperativeHandle, forwardRef, useCallback } from 'react';
 import { useBoolean } from '../lib/hooks/useBoolean';
 import { createPortal } from 'react-dom';
 import { BsXCircle } from 'react-icons/bs';
@@ -9,12 +9,12 @@ export type ModalHandle = {
 };
 
 type Props = {
-    ref: RefObject<HTMLElement> | null;
+    ref: React.RefObject<HTMLElement> | null;
     className: string;
-    children: ReactNode;
+    children: React.ReactNode;
 };
 
-const Modal= forwardRef<ModalHandle, Props>(({ children, className}, ref) => {
+const Modal = forwardRef<ModalHandle, Props>(({ children, className}, ref) => {
     const [isMounted, setIsMounted] = useState(false);
     const [modalDisplay, openModal, closeModal] = useBoolean(false);
 
@@ -55,4 +55,5 @@ const Modal= forwardRef<ModalHandle, Props>(({ children, className}, ref) => {
         : null
 });
 
+Modal.displayName = 'Modal';
 export default Modal;

@@ -22,7 +22,7 @@ const MyHobbies: NextPage<Props> = ({ currentHobbies, newHobbies }) => {
             <Layout>
                 <div className='unauthorized'>
                     <p>You must be signed in to view your list of hobbies.</p>
-                    <Link href='/auth/signin'>
+                    <Link href='/auth/signin' passHref>
                         <button>
                             <a>Sign in</a>
                         </button>

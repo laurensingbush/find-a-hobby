@@ -24,7 +24,7 @@ const ModalHobbyContent: React.FC<Props> = ({ currentHobby }) => {
             getLiked && getLiked[0] ? setIsLiked(getLiked[0]) : setIsLiked(null);
         };
         checkLiked();
-    }, [data]);
+    }, [data, currentHobby?.id]);
 
     const handleLikeClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!session) {
@@ -69,7 +69,7 @@ const ModalHobbyContent: React.FC<Props> = ({ currentHobby }) => {
                 <div className='modal-description'>
                     <h3>{currentHobby?.title}</h3>
                     <p>{currentHobbySummary}</p>
-                    <a href={`https://en.wikipedia.org/wiki/${currentHobby?.urlTitle}`} target='_blank'>
+                    <a href={`https://en.wikipedia.org/wiki/${currentHobby?.urlTitle}`} rel='noreferrer' target='_blank'>
                         More Info
                         <BiLinkExternal />
                     </a>

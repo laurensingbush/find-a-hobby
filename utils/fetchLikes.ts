@@ -11,7 +11,7 @@ export const addHobby = async (newLike: UserLike): Promise<void> => {
                 'Content-Type': 'application/json'
             }
         };
-        await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/hobby`, options);
+        await fetch(`/api/hobby`, options);
     } catch (error) {
         console.error(error);
     };
@@ -20,7 +20,7 @@ export const addHobby = async (newLike: UserLike): Promise<void> => {
 // remove hobby from user's likes
 export const removeHobby = async (hobbyId: number): Promise<void> => {
     try {
-        await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/hobby/${hobbyId}`, {
+        await fetch(`/api/hobby/${hobbyId}`, {
             method: 'DELETE'
         });
     } catch (error) {

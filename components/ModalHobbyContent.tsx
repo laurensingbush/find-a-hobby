@@ -14,16 +14,15 @@ type Props = {
 const ModalHobbyContent: React.FC<Props> = ({ currentHobby }) => {
     const { data: session } = useSession();
     const { mutate } = useSWRConfig();
-    const { data, error, isValidating } = useRequest<UserLike[]>(`/api/likes`);
+    const { data, error, isValidating } = useRequest<UserLike[]>(session ? `/api/likes` : null);
     const [isLiked, setIsLiked] = useState<UserLike | null>(null);
     const currentHobbySummary = currentHobby?.summary && currentHobby.summary.slice(0, currentHobby.summary.indexOf('.') + 1);
-  
+    
     useEffect(() => {
-        const checkLiked = () => {
+        if (session) {
             const getLiked = data?.filter(like => like.hobbyId === currentHobby?.id);
             getLiked && getLiked[0] ? setIsLiked(getLiked[0]) : setIsLiked(null);
-        };
-        checkLiked();
+        }
     }, [data, currentHobby?.id]);
 
     const handleLikeClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -74,9 +73,9 @@ const ModalHobbyContent: React.FC<Props> = ({ currentHobby }) => {
                         <BiLinkExternal />
                     </a>
                 </div>
-                {isValidating ? (
+                { data && isValidating ? (
                     <div className='loading'></div>
-                ) : error ? (
+                ) : data && error ? (
                     <div>Failed to load.</div>
                 ) : (
                     <div className='like-btns'>

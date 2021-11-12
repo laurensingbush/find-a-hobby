@@ -1,34 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Find-A-Hobby
+
+A web app that helps users discover new hobbies to enjoy in their leisure time. Users are free to use the search engine without an account, but creating an account will allow you to save the hobbies that you're interested in exploring.
 
 ## Getting Started
 
-First, run the development server:
+Ensure you have `node` and `npm` installed on your system.
 
-```bash
-npm run dev
-# or
-yarn dev
+```terminal
+$ node -v
+$ npm -v
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. Clone the repository and install dependencies
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```terminal
+$ git clone https://github.com/laurensingbush/find-a-hobby.git
+$ cd find-a-hobby
+$ npm install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### 2. Configure your local environment
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Create an .env.local file in root and add your provider (e.g. GitHub, Google, etc.) credentials and database connection URL
 
-## Learn More
+### 3. Configure Authentication Providers
 
-To learn more about Next.js, take a look at the following resources:
+When setting up OAuth in the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{server}/api/auth/callback/{provider}`.
+e.g. For Google OAuth you would use: `http://localhost:3000/api/auth/callback/google`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Start the application
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To run your site locally, use:
 
-## Deploy on Vercel
+```terminal
+$ npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To run it in production mode, use:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```terminal
+$ npm run build
+$ npm run start
+```
+
+### 5. Preparing for Production
+
+You must set the `NEXTAUTH_URL` environment variable with the URL of your site, before deploying to production.
+e.g. in your `.env.local` file - `NEXTAUTH_URL=https://example.com`
+
+Also make sure to set your `DATABASE_URL`, `{CLIENT}_ID`, and `{CLIENT}_SECRET` environment variables in your hosting providers dashboard.
+
+## Built with:
+
+- [Next.js](https://nextjs.org/) as the React framework
+- [Prisma](https://www.prisma.io/) as the ORM for migrations and database access
+- [PostgreSQL](https://www.postgresql.org/) as the database
+- [NextAuth.js](https://next-auth.js.org/) for authentication via GitHub & Google (OAuth)
+- [TypeScript](https://www.typescriptlang.org/) as the programming language
+- [Vercel](https://vercel.com) for deployment
+- [MediaWiki API](https://www.mediawiki.org/wiki/API:Main_page) for accessing their list of hobbies data

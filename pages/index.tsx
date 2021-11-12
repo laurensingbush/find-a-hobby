@@ -8,7 +8,7 @@ import SearchBar from '../components/SearchBar';
 const Home: NextPage = () => {
   const [searchValue, setSearchValue] = useState('');
   const [category, setCategory] = useState('');
-
+ 
   return (
     <div className='home'>
       <Head />

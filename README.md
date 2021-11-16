@@ -1,6 +1,8 @@
 # Find-A-Hobby
 
-A web app that helps users discover new hobbies to enjoy in their leisure time. Users are free to use the search engine without an account, but creating an account will allow you to save the hobbies that you're interested in exploring.
+A web app that helps users discover new hobbies to enjoy in their leisure time. Users are free to use the search engine without an account, but creating an account will allow them to save the hobbies they're interested in exploring and view them whenever they're signed in.
+
+<img src="https://user-images.githubusercontent.com/43523243/142054490-5e9e5ed4-54bc-479c-b3d1-6a0cabcac3eb.png" alt="mobile" width="700">
 
 ## Getting Started
 
@@ -21,7 +23,18 @@ $ npm install
 
 ### 2. Configure your local environment
 
-Create an .env.local file in root and add your provider (e.g. GitHub, Google, etc.) credentials and database connection URL
+Create a .env.local file in root and set your provider credentials and database connection URL.
+
+e.g.
+
+```
+GITHUB_ID=
+GITHUB_SECRET=
+GOOGLE_ID=
+GOOGLE_SECRET=
+NEXTAUTH_URL=
+DATABASE_URL=
+```
 
 ### 3. Configure Authentication Providers
 

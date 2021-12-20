@@ -23,9 +23,9 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Run ESLint
-        run: npm lint
+        run: npm run lint
       - name: Run stylelint
-        run: npm stylelint
+        run: npm run stylelint
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,7 +49,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run Lighthouse on preview urls
-      - uses: treosh/lighthouse-ci-action@v7
+        uses: treosh/lighthouse-ci-action@v7
         with:
           urls: |
             ${{ needs.deploy.outputs.preview-url }}

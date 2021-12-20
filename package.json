@@ -7,20 +7,24 @@
     "build": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint",
+    "stylelint": "npx stylelint **/*.scss",
     "ts-node-script": "ts-node --project tsconfig_scripts.json -r tsconfig-paths/register"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^0.5.2-next.15",
+    "@plaiceholder/next": "^2.2.0",
     "@prisma/client": "^3.0.2",
     "next": "11.1.2",
     "next-auth": "4.0.0-beta.2",
     "node-fetch": "^3.0.0",
     "nprogress": "^0.2.0",
     "p-limit": "^4.0.0",
+    "plaiceholder": "^2.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
     "sass": "^1.42.1",
+    "sharp": "^0.29.3",
     "swr": "^1.0.1"
   },
   "devDependencies": {
@@ -31,6 +35,9 @@
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "prisma": "^3.0.2",
+    "stylelint": "^14.1.0",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-scss": "^4.0.0",
     "ts-node": "^10.2.1",
     "typescript": "4.4.3"
   },

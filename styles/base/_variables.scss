@@ -1,7 +1,3 @@
-// Google Font
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
-
 // Colors
 $white: #ffffff;
 $black: #182628;
@@ -16,10 +12,8 @@ $boxshadow-color: rgba(0, 0, 0, 0.2);
 $error-color: #f99386;
 
 // Fonts
-$font-stack: 'Source Sans Pro', system, -apple-system, BlinkMacSystemFont,
-  Helvetica, sans-serif, Arial;
-$Roboto: 'Roboto', $font-stack;
-$Caveat: 'Caveat', $font-stack;
+$Roboto: 'Roboto', sans-serif;
+$Caveat: 'Caveat', cursive;
 
 // Font-size
 $base-font-size: 1rem;

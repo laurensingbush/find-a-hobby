@@ -23,13 +23,12 @@
   background-color: $modal-bg;
   .modal-hobby-list {
     width: 90%;
-    height: 75%;
+    height: auto;
     border: 2px solid $green;
     border-radius: 5px;
     background-color: $bg-color;
     @include tablet {
       width: 32rem;
-      height: auto;
     }
     @include large-desktop {
       width: 40rem;

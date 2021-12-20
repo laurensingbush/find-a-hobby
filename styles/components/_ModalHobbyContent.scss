@@ -4,7 +4,7 @@
   border-radius: 5px;
   height: 100%;
   width: 100%;
-  padding: 1rem 0.5rem;
+  padding: 2rem 1rem;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: 8px; /* Firefox */
@@ -38,25 +38,32 @@
       border: 3px solid $bg-color;
     }
   }
-  .modal-img {
+  .modal-img-container {
     margin: 0 auto;
-    width: 60%;
-    @include small-iphone {
-      width: 40%;
-    }
+    width: 200px;
+    height: 200px;
+    position: relative;
     @include tablet {
       margin-right: 2rem;
     }
-    img {
-      object-fit: contain;
-      width: 100%;
-      height: auto;
+    div {
+      overflow: visible !important;
       border-radius: 5px;
       box-shadow: 0 0 0.625rem $boxshadow-color;
+      .modal-img {
+        object-fit: cover;
+        object-position: 50% 50%;
+        border-radius: 5px;
+        opacity: 0;
+        opacity: opacity 0.4s;
+        &[data-isvisible='true'] {
+          opacity: 1;
+        }
+      }
     }
   }
   .modal-content {
-    margin: 0.5rem 0 0 0;
+    margin: 1rem 0 0 0;
     @include tablet {
       width: 60%;
       margin: 0 1.5rem 0 0;

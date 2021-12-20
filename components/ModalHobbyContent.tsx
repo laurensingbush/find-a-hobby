@@ -6,6 +6,7 @@ import { useRequest } from '../lib/hooks/useRequest';
 import { useSWRConfig } from 'swr';
 import { addHobby, removeHobby } from '../utils/fetchLikes';
 import LikeButton from './LikeButton';
+import NextImage from './NextImage';
 
 type Props = {
     currentHobby?: Hobby;
@@ -19,11 +20,12 @@ const ModalHobbyContent: React.FC<Props> = ({ currentHobby }) => {
     const currentHobbySummary = currentHobby?.summary && currentHobby.summary.slice(0, currentHobby.summary.indexOf('.') + 1);
     
     useEffect(() => {
+        // if valid session, check for hobby in user's likes
         if (session) {
             const getLiked = data?.filter(like => like.hobbyId === currentHobby?.id);
             getLiked && getLiked[0] ? setIsLiked(getLiked[0]) : setIsLiked(null);
         }
-    }, [data, currentHobby?.id]);
+    }, [session, data, currentHobby?.id]);
 
     const handleLikeClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!session) {
@@ -56,14 +58,19 @@ const ModalHobbyContent: React.FC<Props> = ({ currentHobby }) => {
             mutate('api/likes');
         }; 
     };
-    
+   
     return (
         <div className='modal-hobby-content-container'>
-            <div className='modal-img'>
-                {currentHobby?.imageUrl && (
-                    <img src={currentHobby.imageUrl} alt={`${currentHobby.title} image`} />
-                )}
-            </div>
+            {currentHobby?.imageUrl && (
+                <div className='modal-img-container'>
+                    <NextImage 
+                        src={currentHobby.imageUrl} 
+                        alt={currentHobby.title} 
+                        layout='fill'
+                        className='modal-img'
+                    />
+                </div>
+            )}
             <div className='modal-content'>
                 <div className='modal-description'>
                     <h3>{currentHobby?.title}</h3>

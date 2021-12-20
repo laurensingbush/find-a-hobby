@@ -1,7 +1,4 @@
 .categorylist-container {
-  .loading {
-    @include loading-dots($width: 10px, $height: 10px);
-  }
   .category {
     margin-bottom: 2rem;
     h2 {

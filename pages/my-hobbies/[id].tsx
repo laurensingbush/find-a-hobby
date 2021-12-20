@@ -8,6 +8,7 @@ import { removeHobby } from '../../utils/fetchLikes';
 import formatHistorySection from '../../utils/formatHistorySection';
 import Layout from '../../components/Layout';
 import Tooltip from '../../components/Tooltip';
+import NextImage from '../../components/NextImage';
 
 type MyHobbyProps = {
     id: number;
@@ -75,7 +76,12 @@ const MyHobby: NextPage<{myHobby: MyHobbyProps}> = ({ myHobby }) => {
             <article className='myHobby-id-container'>
                 {myHobby.imageUrl && (
                     <figure>
-                        <img src={myHobby.imageUrl} alt={`${myHobby.title} image`} aria-label='hobby image' />
+                        <NextImage
+                            src={myHobby.imageUrl}
+                            alt={myHobby.title}
+                            layout='fill'
+                            className='myhobby-img'
+                        />
                     </figure>
                 )}
                 <div className='title'>

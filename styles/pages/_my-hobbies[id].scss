@@ -6,18 +6,31 @@
   }
   figure {
     margin: 0 auto;
-    img {
-      object-fit: contain;
-      width: 100%;
-      height: auto;
-      max-height: 10rem;
+    position: relative;
+    width: 230px;
+    height: 250px;
+    div {
+      overflow: visible !important;
       border-radius: 5px;
       box-shadow: 0 0 0.625rem $boxshadow-color;
+      .myhobby-img {
+        object-fit: cover;
+        object-position: 50% 50%;
+        border-radius: 5px;
+        opacity: 0;
+        opacity: opacity 0.4s;
+        &[data-isvisible='true'] {
+          opacity: 1;
+        }
+      }
     }
   }
   .title {
     @include flexbox($flex-direction: column, $align-items: flex-start);
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
+    @include tablet {
+      margin-top: 0.5rem;
+    }
     @include desktop {
       @include flexbox($flex-direction: row, $align-items: center);
     }
@@ -79,5 +92,5 @@
 }
 
 .authenticating {
-  margin-top: 1rem;
+  margin: 1rem;
 }

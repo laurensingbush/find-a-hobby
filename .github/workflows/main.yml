@@ -1,0 +1,62 @@
+name: Staging CI
+on:
+  push:
+    branches-ignore:
+      - 'main'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+      - name: Cache node modules and next folder
+        uses: actions/cache@v2
+        with:
+          path: |
+            ${{ github.workspace }}/node_modules
+          key: ${{ runner.os }}-nodeModules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nodeModules-
+      - name: Install dependencies
+        run: npm install
+      - name: Run ESLint
+        run: npm run lint
+      - name: Run stylelint
+        run: npm run stylelint
+  
+  wait-for-vercel-deployment: 
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Retrieve deployment url
+        run: "echo VERCEL_DEPLOYMENT_URL=staging-find-a-hobby.vercel.app >> $GITHUB_ENV"
+      - uses: UnlyEd/github-action-await-vercel@v1.2.14
+        id: await-vercel 
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        with:
+          deployment-url: ${{ env.VERCEL_DEPLOYMENT_URL }}
+          timeout: 90
+      - name: Display deployment status
+        run: "echo The deployment at ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).url }} is ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).readyState }}"
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    needs: wait-for-vercel-deployment
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Lighthouse on preview urls
+        uses: treosh/lighthouse-ci-action@v7
+        with:
+          urls: |
+            ${{ env.VERCEL_DEPLOYMENT_URL }}
+            budgetPath: ./budget.json
+            uploadArtifacts: true
+            temporaryPublicStorage: true

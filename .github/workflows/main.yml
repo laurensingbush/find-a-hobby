@@ -36,7 +36,7 @@ jobs:
     needs: lint
     steps:
       - name: Retrieve deployment url
-        run: "echo VERCEL_DEPLOYMENT_URL=staging-find-a-hobby.vercel.app >> $GITHUB_ENV"
+        run: echo "VERCEL_DEPLOYMENT_URL=staging-find-a-hobby.vercel.app" >> $GITHUB_ENV
       - uses: UnlyEd/github-action-await-vercel@v1.2.14
         id: await-vercel 
         env:
@@ -45,18 +45,18 @@ jobs:
           deployment-url: ${{ env.VERCEL_DEPLOYMENT_URL }}
           timeout: 90
       - name: Display deployment status
-        run: "echo The deployment at ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).url }} is ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).readyState }}"
+        run: echo "The deployment at ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).url }} is ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).readyState }}"
 
   lighthouse:
     runs-on: ubuntu-latest
     needs: wait-for-vercel-deployment
     steps:
       - uses: actions/checkout@v2
-      - name: Run Lighthouse on preview urls
-        uses: treosh/lighthouse-ci-action@v7
+      - name: Create valid deployment url
+        run: echo "LH_DEPLOYMENT_URL=https://staging-find-a-hobby.vercel.app/" >> $GITHUB_ENV
+      - name: Run Lighthouse on deployment url
+        uses: treosh/lighthouse-ci-action@v8
         with:
           urls: |
-            ${{ env.VERCEL_DEPLOYMENT_URL }}
-            budgetPath: ./budget.json
-            uploadArtifacts: true
+            https://staging-find-a-hobby.vercel.app
             temporaryPublicStorage: true

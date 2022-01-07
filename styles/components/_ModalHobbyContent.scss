@@ -2,6 +2,7 @@
   position: relative;
   background-color: $bg-color;
   border-radius: 5px;
+  border: 2px solid $green;
   height: 100%;
   width: 100%;
   padding: 2rem 1rem;
@@ -90,7 +91,7 @@
       }
     }
     .loading {
-      @include loading-dots($width: 10px, $height: 10px);
+      @include loading-dots($width: 10px, $height: 10px, $margin: 5rem auto);
     }
     .like-btns {
       @include flexbox(

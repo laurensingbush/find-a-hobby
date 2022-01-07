@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import type { NextPage, GetServerSideProps } from 'next';
+import { NextSeo } from 'next-seo';
 import { useSession, getSession } from 'next-auth/react';
 import { Hobby } from '@prisma/client';
 import prisma from '../lib/prisma';
@@ -33,14 +34,21 @@ const MyHobbies: NextPage<Props> = ({ currentHobbies, newHobbies }) => {
     };
 
     return (
-        <Layout>
-            <div className='my-hobbies-container'>
-                <h2><span>Current Hobbies</span></h2>
-                <MyHobbyList myHobbies={currentHobbies} />
-                <h2><span>New Hobbies</span></h2>
-                <MyHobbyList myHobbies={newHobbies} />
-            </div>
-        </Layout>
+        <>
+            <NextSeo
+                title='My Hobbies'
+                titleTemplate='%s - Find-A-Hobby'
+                description="A curated list of your current hobbies and hobbies you'd like to try."
+            />
+            <Layout>
+                <div className='my-hobbies-container'>
+                    <h2><span>Current Hobbies</span></h2>
+                    <MyHobbyList myHobbies={currentHobbies} />
+                    <h2><span>New Hobbies</span></h2>
+                    <MyHobbyList myHobbies={newHobbies} />
+                </div>
+            </Layout>
+        </>
     );
 };
 
@@ -48,7 +56,6 @@ export default MyHobbies;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context);
-    
     const currentHobbies = await prisma.hobby.findMany({
         where: {
             users: {
@@ -62,7 +69,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
         }
     });
-
     const newHobbies = await prisma.hobby.findMany({
         where: {
             users: {

@@ -1,6 +1,8 @@
-import { useEffect } from 'react';
 import '../styles/main.scss';
 import '../styles/nprogress.scss';
+import { useEffect } from 'react';
+import { DefaultSeo } from 'next-seo';
+import useSeoConfig from '../next-seo.config';
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
@@ -15,6 +17,7 @@ NProgress.configure({
 
 const App = ({ Component, pageProps}: AppProps) => {
   const router = useRouter();
+  const seoConfig = useSeoConfig();
 
   // show progress bar while waiting for page load on route change
   useEffect(() => {
@@ -37,6 +40,7 @@ const App = ({ Component, pageProps}: AppProps) => {
 
   return (
     <SessionProvider session={pageProps.session}>
+      <DefaultSeo {...seoConfig} />
       <Component {...pageProps} />
     </SessionProvider>
   );

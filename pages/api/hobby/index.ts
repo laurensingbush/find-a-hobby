@@ -4,7 +4,7 @@ import prisma from '../../../lib/prisma';
 import { getSession } from 'next-auth/react';
 
 // POST api/hobby
-export default async function handle(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const session = await getSession({ req });
     const { hobbyId, newHobby } = req.body;
     try {

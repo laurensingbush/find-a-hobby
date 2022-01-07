@@ -91,6 +91,8 @@
   }
 }
 
-.authenticating {
-  margin: 1rem;
+.loading-container {
+  .loading {
+    @include loading-dots($width: 10px, $height: 10px, $margin: 3rem auto);
+  }
 }

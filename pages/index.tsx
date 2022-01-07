@@ -3,7 +3,6 @@ import type { NextPage, GetStaticProps } from 'next'
 import prisma from '../lib/prisma';
 import { Prisma } from '@prisma/client';
 import { useFilter } from '../lib/hooks/useFilter';
-import Head from '../components/Head';
 import Layout from '../components/Layout';
 import CategoryList from '../components/CategoryList';
 import SearchBar from '../components/SearchBar';
@@ -23,13 +22,10 @@ const Home: NextPage<Props> = ({ categories }) => {
   const [filteredCategories] = useFilter(category, searchValue, categories);
  
   return (
-    <div className='home'>
-      <Head />
-      <Layout>
-        <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} category={category} setCategory={setCategory} />
-        <CategoryList categories={filteredCategories} />
-      </Layout>
-    </div>
+    <Layout>
+      <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} category={category} setCategory={setCategory} />
+      <CategoryList categories={filteredCategories} />
+    </Layout>
   );
 };
 
@@ -46,5 +42,5 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       categories
     }
-  }
-}
+  };
+};

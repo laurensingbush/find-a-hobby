@@ -1,16 +1,18 @@
 import React, { useRef } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { useRequest } from '../lib/hooks/useRequest';
 import { SiGithub } from 'react-icons/si'
 import { FcGoogle } from 'react-icons/fc';
 import Modal, { ModalHandle } from './Modal';
-import ModalUserContent from './ModalUserContent';
 
 export type AccountProvider = {
     provider: string;
 };
+
+const DynamicModalContent = dynamic(() => import('../components/ModalUserContent'));
 
 const NavBar: React.FC = () => {
     const { data: session, status } = useSession();
@@ -55,7 +57,7 @@ const NavBar: React.FC = () => {
                 </div>
             </nav>
             <Modal ref={modalRef} className='user'>
-                <ModalUserContent modalRef={modalRef} accountProvider={data} />
+                <DynamicModalContent modalRef={modalRef} accountProvider={data} />
             </Modal>
         </>
     );

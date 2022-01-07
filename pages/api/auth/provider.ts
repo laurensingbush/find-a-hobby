@@ -4,7 +4,7 @@ import prisma from '../../../lib/prisma';
 import { getSession } from 'next-auth/react';
 
 // GET /api/auth/provider
-export default async function handle(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
         const session = await getSession({ req });
         const accountProvider = await prisma.user.findUnique({

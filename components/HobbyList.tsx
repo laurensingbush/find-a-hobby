@@ -1,18 +1,20 @@
 import React, { useState, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import { ImCircleUp } from 'react-icons/im';
 import { Hobby } from '@prisma/client';
 import Modal, { ModalHandle } from './Modal';
-import ModalHobbyContent from './ModalHobbyContent';
 import Tooltip from './Tooltip';
 
 type Props = {
     hobbies: Hobby[];
 };
 
+const DynamicModalContent = dynamic(() => import('../components/ModalHobbyContent'));
+
 const HobbyList: React.FC<Props> = ({ hobbies }) => {
     const modalRef = useRef<ModalHandle>(null);
     const [currentHobby, setCurrentHobby] = useState<Hobby>();
-
+   
     return (
         <>
             <div className='hobbylist-container'>
@@ -32,7 +34,7 @@ const HobbyList: React.FC<Props> = ({ hobbies }) => {
                 </div>
             </div>
             <Modal ref={modalRef} className='hobby-list'>
-                <ModalHobbyContent currentHobby={currentHobby} />
+                <DynamicModalContent currentHobby={currentHobby} />
             </Modal>
         </>
     );

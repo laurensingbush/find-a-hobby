@@ -10,7 +10,7 @@ type Props = {
 
 const NextImage: React.FC<Props> = ({ src, alt, className, layout }) => {
     const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
-
+    
     return (
         <Image
             onLoadingComplete={() => setIsImageLoaded(true)}
@@ -20,7 +20,7 @@ const NextImage: React.FC<Props> = ({ src, alt, className, layout }) => {
             data-isvisible={isImageLoaded}
             className={className}
         />
-    );
+    ); 
 };
 
 export default NextImage;

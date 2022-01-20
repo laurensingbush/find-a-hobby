@@ -23,6 +23,9 @@ html {
 
 nav {
   padding: 1.5rem 1rem;
+  @include tablet {
+    padding: 1.5rem;
+  }
   @include desktop {
     padding: 1.5rem 2rem;
   }
@@ -63,6 +66,14 @@ button {
       outline: none;
     }
   }
+}
+
+.error-img {
+  background-color: $hover-lightgreen;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 0.625rem $boxshadow-color;
 }
 
 .visually-hidden {

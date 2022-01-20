@@ -1,6 +1,9 @@
 .myHobby-id-container {
   @include flexbox($flex-direction: column);
   margin: 1rem;
+  @include tablet {
+    margin: 1rem 1.5rem;
+  }
   @include desktop {
     margin: 1rem 2rem;
   }

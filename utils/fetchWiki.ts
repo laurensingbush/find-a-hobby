@@ -31,17 +31,19 @@ interface HobbyDescription {
 export interface Hobby extends HobbyDetails, HobbyDescription {};
 
 
-// assigns a type to indoor/outdoor categories
-const getType = (id: number) => {
-    let type = '';
-    if (id === 5 || id === 6) {
-        type = 'Collection hobbies';
+// assigns a name & type to each category
+const getNameAndType = (id: number, line: string): {name: string, type: string} => {
+    let details = {name: '', type: ''};
+    if (id === 1 || id === 2 || id === 3) {
+        details = {name: line, type: ''};
+    } else if (id === 5 || id === 6) {
+        details = {name: 'Collection hobbies', type: line}
     } else if (id === 8 || id === 9) {
-        type = 'Competitive hobbies';
+        details = {name: 'Competitive hobbies', type: line}
     } else if (id === 11 || id === 12) {
-        type = 'Observation hobbies';
+        details = {name: 'Observation hobbies', type: line}
     };
-    return type;
+    return details;
 };
 
 // assigns a unique index to each hobby
@@ -66,12 +68,12 @@ export async function getCategories() {
     try {
         const res = await fetch('https://en.wikipedia.org/api/rest_v1/page/mobile-sections/List_of_hobbies', options);
         const resJSON = await res.json() as any;
-        const sections = resJSON.lead.sections.filter((section: {id: number, line: string}) => ![0, 13, 14].includes(section.id));
+        const sections = resJSON.lead.sections.filter((section: {id: number, line: string}) => ![0, 4, 7, 10, 13, 14].includes(section.id));
         for (let section of sections) {
             categories.push({
                 id: section.id,
-                name: section.line,
-                type: getType(section.id)
+                name: getNameAndType(section.id, section.line).name,
+                type: getNameAndType(section.id, section.line).type
             });
         };
         fs.writeFileSync('./prisma/data/categories.json', JSON.stringify(categories, null, 2));

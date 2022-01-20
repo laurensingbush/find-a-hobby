@@ -14,7 +14,7 @@ const DropdownMenu: React.FC<Props> = ({ category, handleSelect }) => {
             <select value={category} onChange={handleSelect} id='selectHobby'>
                 <option value=''>All</option>
                 <option value='General hobbies'>General</option>
-                <option value='Outdoors and Sports'>Outdoors and Sports</option>
+                <option value='Outdoors and sports'>Outdoors and Sports</option>
                 <option value='Educational hobbies'>Educational</option>
                 <option value='Collection hobbies'>Collection</option>
                 <option value='Competitive hobbies'>Competitive</option>

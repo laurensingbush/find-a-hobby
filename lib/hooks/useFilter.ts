@@ -8,12 +8,12 @@ export const useFilter = (category: string, searchValue: string, categories: Cat
         let categoryList: CategoryWithHobbies[] = JSON.parse(JSON.stringify(categories));
 
         const filterByCategory = (arr: CategoryWithHobbies[]) => {
-            return arr.filter((item) => item.type === category || item.name === category);
+            return arr.filter((item) => item.name === category);
         };
 
         const filterBySearchValue = (arr: CategoryWithHobbies[]) => {
             const filteredHobbies = arr.map((item) => {
-                return {...item, hobbies: item.hobbies.filter((hobby) => hobby.title.toLowerCase().startsWith(searchValue.toLowerCase()))}
+                return {...item, hobbies: item.hobbies.filter((hobby) => hobby.title.toLowerCase().includes(searchValue.toLowerCase()))}
             });
             return filteredHobbies.filter((item) => item.hobbies.length !== 0);
         };

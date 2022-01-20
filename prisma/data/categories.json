@@ -6,7 +6,7 @@
   },
   {
     "id": 2,
-    "name": "Outdoors and Sports",
+    "name": "Outdoors and sports",
     "type": ""
   },
   {
@@ -15,48 +15,33 @@
     "type": ""
   },
   {
-    "id": 4,
-    "name": "Collection hobbies",
-    "type": ""
-  },
-  {
     "id": 5,
-    "name": "Indoors",
-    "type": "Collection hobbies"
+    "name": "Collection hobbies",
+    "type": "Indoors"
   },
   {
     "id": 6,
-    "name": "Outdoors",
-    "type": "Collection hobbies"
-  },
-  {
-    "id": 7,
-    "name": "Competitive hobbies",
-    "type": ""
+    "name": "Collection hobbies",
+    "type": "Outdoors"
   },
   {
     "id": 8,
-    "name": "Indoors",
-    "type": "Competitive hobbies"
+    "name": "Competitive hobbies",
+    "type": "Indoors"
   },
   {
     "id": 9,
-    "name": "Outdoors",
-    "type": "Competitive hobbies"
-  },
-  {
-    "id": 10,
-    "name": "Observation hobbies",
-    "type": ""
+    "name": "Competitive hobbies",
+    "type": "Outdoors"
   },
   {
     "id": 11,
-    "name": "Indoors",
-    "type": "Observation hobbies"
+    "name": "Observation hobbies",
+    "type": "Indoors"
   },
   {
     "id": 12,
-    "name": "Outdoors",
-    "type": "Observation hobbies"
+    "name": "Observation hobbies",
+    "type": "Outdoors"
   }
 ]

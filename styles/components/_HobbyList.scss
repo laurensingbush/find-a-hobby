@@ -1,33 +1,30 @@
 .hobbylist-container {
-  .hobby-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    grid-auto-rows: 1fr;
-    gap: 0.5rem;
-    .hobby-item {
-      @include flexbox(
-        $flex-direction: column,
-        $align-items: center,
-        $justify-content: center
-      );
-      position: relative;
-      border-radius: 5px;
-      background-color: $light-green;
-      padding: 0.2rem 0.2rem 0.5rem 0.2rem;
-      .btn {
-        position: absolute;
-        top: 3px;
-        right: 5px;
-        button {
-          padding: 0;
-          color: $dark-gray;
+  width: 100%;
+  overflow-x: hidden;
+  .list {
+    background-color: rgba($light-green, 0.2);
+    .row {
+      @include flexbox($align-items: center, $justify-content: center);
+      .hobby-item {
+        @include flexbox(
+          $flex-direction: column,
+          $align-items: center,
+          $justify-content: center
+        );
+        border-radius: 5px;
+        background-color: $light-green;
+        padding: 0.2rem;
+        @include desktop {
+          transition: transform 0.2s;
+          &:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+            box-shadow: 0 0 0.625rem $boxshadow-color;
+          }
         }
-      }
-      p {
-        font-size: 1rem;
-        margin: 0;
-        text-align: center;
-        margin-top: 1rem;
+        p {
+          text-align: center;
+        }
       }
     }
   }

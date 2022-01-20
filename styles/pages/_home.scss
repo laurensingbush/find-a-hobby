@@ -1,6 +1,18 @@
-.searchbar-container,
-.categorylist-container {
+.searchbar-container {
   margin: 0.5rem 1rem 1rem 1rem;
+  @include tablet {
+    margin: 0.5rem 1.5rem 1rem 1.5rem;
+  }
+  @include desktop {
+    margin: 0.5rem 2rem 1rem 2rem;
+  }
+}
+
+.categorylist-container {
+  margin: 1.5rem 1.5rem;
+  @include tablet {
+    margin: 0.5rem 1.5rem;
+  }
   @include desktop {
     margin: 0.5rem 2rem 1rem 2rem;
   }

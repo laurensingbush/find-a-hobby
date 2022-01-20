@@ -20,7 +20,7 @@ const Home: NextPage<Props> = ({ categories }) => {
   const [searchValue, setSearchValue] = useState('');
   const [category, setCategory] = useState('');
   const [filteredCategories] = useFilter(category, searchValue, categories);
- 
+
   return (
     <Layout>
       <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} category={category} setCategory={setCategory} />
@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps = async () => {
       hobbies: true
     }
   });
-
+  
   return {
     props: {
       categories

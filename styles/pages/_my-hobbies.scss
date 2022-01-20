@@ -1,5 +1,8 @@
 .my-hobbies-container {
   margin: 1.5rem 1rem 1rem 1rem;
+  @include tablet {
+    margin: 1.5rem;
+  }
   @include desktop {
     margin: 1.5rem 2rem 2rem 2rem;
   }
